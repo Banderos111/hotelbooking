@@ -21,33 +21,31 @@
             </plugin>
         </plugins>
     </build>
-    
+
     <properties>
+        <mysql-connector-java.version>8.0.17</mysql-connector-java.version>
+        <hibernate.version>5.4.2.Final</hibernate.version>
         <spring.version>5.1.2.RELEASE</spring.version>
         <jstl.version>1.2</jstl.version>
-        <javax.servlet-api.version>4.0.1</javax.servlet-api.version>
         <lombok.version>1.18.8</lombok.version>
-        <mysql.version>5.1.46</mysql.version>
         <junit.version>4.12</junit.version>
-        <validation-api.version>2.0.0.Final</validation-api.version>
-        <hibernate-validator.version>6.0.2.Final</hibernate-validator.version>
-        <lombok.version>1.18.8</lombok.version>
+        <javax.persistence-api.version>2.2</javax.persistence-api.version>
+        <javax.servlet-api.version>4.0.1</javax.servlet-api.version>
+        <spring-data-jpa.version>2.1.6.RELEASE</spring-data-jpa.version>
     </properties>
 
     <dependencies>
-        <!-- mySql -->
-        <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-            <version>${mysql.version}</version>
-        </dependency>
-
         <!-- servlet-api -->
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
             <version>${javax.servlet-api.version}</version>
             <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>javax.persistence</groupId>
+            <artifactId>javax.persistence-api</artifactId>
+            <version>${javax.persistence-api.version}</version>
         </dependency>
 
         <!-- jstl -->
@@ -83,23 +81,48 @@
             <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+            <version>${spring.version}</version>
+            <scope>test</scope>
+        </dependency>
 
         <!-- hibernate -->
         <dependency>
-            <groupId>javax.validation</groupId>
-            <artifactId>validation-api</artifactId>
-            <version>${validation-api.version}</version>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-entitymanager</artifactId>
+            <version>${hibernate.version}</version>
+            <scope>runtime</scope>
         </dependency>
         <dependency>
-            <groupId>org.hibernate.validator</groupId>
-            <artifactId>hibernate-validator</artifactId>
-            <version>${hibernate-validator.version}</version>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>${mysql-connector-java.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.hibernate.validator</groupId>
-            <artifactId>hibernate-validator-annotation-processor</artifactId>
-            <version>${hibernate-validator.version}</version>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-orm</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+
+        <!-- spring data -->
+        <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-jpa</artifactId>
+            <version>${spring-data-jpa.version}</version>
+        </dependency>
+
+        <!-- spring security -->
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-web</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-config</artifactId>
+            <version>${spring.version}</version>
         </dependency>
     </dependencies>
-
 </project>
