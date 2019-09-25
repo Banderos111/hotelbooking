@@ -15,12 +15,12 @@ import java.util.Collections;
 @Service
 @Transactional
 @RequiredArgsConstructor
-public class CustomUserServiceImpl implements UserDetailsService {
+public class UserServiceImpl implements UserDetailsService {
     private final UserRepository repository;
 
     @Override
-    public UserDetails loadUserByUsername(String firstName) throws UsernameNotFoundException {
-        User loadedUser = repository.findUserByFirstName(firstName)
+    public UserDetails loadUserByUsername(String mail) throws UsernameNotFoundException {
+        User loadedUser = repository.findUserByMail(mail)
                 .orElseThrow(() -> new UsernameNotFoundException("Can't find user by provided name!"));
 
         return new org.springframework.security.core.userdetails.User(loadedUser.getMail(), loadedUser.getPassword(),

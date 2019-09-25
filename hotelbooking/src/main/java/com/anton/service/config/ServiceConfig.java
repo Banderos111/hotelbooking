@@ -9,4 +9,5 @@ import org.springframework.context.annotation.Import;
 @ComponentScan({"com.anton.service"})
 @Import(DaoConfig.class)
 public class ServiceConfig {
+
 }

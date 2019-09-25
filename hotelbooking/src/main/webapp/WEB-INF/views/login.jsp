@@ -15,8 +15,8 @@
 <br>
 
 <form action="${pageContext.request.contextPath}/login" method="post">
-    Login:<input type="text" name="username">
-    Password:<input type="text" name="password">
+    Email:<input type="text" name="mail">
+    Пароль:<input type="text" name="password">
     <input type="submit" value="Submit">
 </form>
 </body>

@@ -64,7 +64,7 @@ public class DaoConfig {
         hibernateProperties.setProperty(
                 "hibernate.hbm2ddl.auto", "update");
         hibernateProperties.setProperty(
-                "hibernate.dialect", "org.hibernate.dialect.MySQL8Dialect");
+                "hibernate.dialect", "org.hibernate.dialect.MySQLDialect");
         hibernateProperties.setProperty("hibernate.show_sql", "true");
         hibernateProperties.setProperty("hibernate.format_sql", "true");
         return hibernateProperties;
