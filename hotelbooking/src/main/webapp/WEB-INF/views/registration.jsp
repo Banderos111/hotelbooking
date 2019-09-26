@@ -5,8 +5,8 @@
   Time: 15:57
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ page contentType="text/html;charset=UTF-8" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <html>
 <head>
     <title>registration</title>
@@ -19,7 +19,7 @@
     <form:input path="firstName"/>
     <form:label path="secondName">Фамилия</form:label>
     <form:input path="secondName"/>
-    <form:label path="login">Email</form:label>
+    <form:label path="mail">Email</form:label>
     <form:input path="mail"/>
     <form:label path="password">Пароль</form:label>
     <form:input path="password"/>
