@@ -1,6 +1,8 @@
 package com.anton;
 
+import com.anton.dao.config.DaoConfig;
 import com.anton.service.config.ServiceConfig;
+import com.anton.web.config.SecurityConfig;
 import com.anton.web.config.WebConfig;
 import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
@@ -10,7 +12,7 @@ import javax.servlet.Filter;
 public class WebAppInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
     @Override
     protected Class<?>[] getRootConfigClasses() {
-        return new Class[]{ServiceConfig.class, WebConfig.class};
+        return new Class[]{ServiceConfig.class, SecurityConfig.class};
     }
 
     @Override

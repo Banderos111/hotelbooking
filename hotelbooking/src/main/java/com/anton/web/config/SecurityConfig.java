@@ -15,9 +15,9 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Configuration
+@ComponentScan(basePackages = "com.anton.web")
 @EnableWebSecurity
 @RequiredArgsConstructor
-@ComponentScan(basePackages = "com.anton.web")
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     private final UserDetailsService userDetailsService;

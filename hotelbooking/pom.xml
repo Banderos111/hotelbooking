@@ -23,7 +23,7 @@
     </build>
 
     <properties>
-        <mysql-connector-java.version>8.0.17</mysql-connector-java.version>
+        <mysql.version>8.0.17</mysql.version>
         <hibernate.version>5.4.2.Final</hibernate.version>
         <spring.version>5.1.2.RELEASE</spring.version>
         <jstl.version>1.2</jstl.version>
@@ -47,7 +47,6 @@
             <artifactId>javax.persistence-api</artifactId>
             <version>${javax.persistence-api.version}</version>
         </dependency>
-
         <!-- jstl -->
         <dependency>
             <groupId>javax.servlet</groupId>
@@ -92,18 +91,26 @@
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-entitymanager</artifactId>
-            <version>${hibernate.version}</version>
-            <scope>runtime</scope>
+            <version>5.4.5.Final</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-core -->
         <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-            <version>${mysql-connector-java.version}</version>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-core</artifactId>
+            <version>5.4.5.Final</version>
         </dependency>
+
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-orm</artifactId>
             <version>${spring.version}</version>
+        </dependency>
+
+        <!-- mySQL -->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>${mysql.version}</version>
         </dependency>
 
         <!-- spring data -->
