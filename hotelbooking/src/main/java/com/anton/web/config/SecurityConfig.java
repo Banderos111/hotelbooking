@@ -1,5 +1,7 @@
 package com.anton.web.config;
 
+import com.anton.dao.repository.UserRepository;
+import com.anton.service.UserServiceImpl;
 import com.anton.web.CustomizeAuthenticationSuccessHandler;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +22,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @EnableWebSecurity
 @RequiredArgsConstructor
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
-
+    private final UserRepository userRepository;
     private final UserDetailsService userDetailsService;
     private final CustomizeAuthenticationSuccessHandler customizeAuthenticationSuccessHandler;
 
@@ -62,6 +64,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         return new BCryptPasswordEncoder();
     }
 
+    @Bean
+    public UserDetailsService mySqlDetailsService() {
+        return new UserServiceImpl(userRepository);
+    }
+
 
     @Bean
     public DaoAuthenticationProvider authenticationProvider() {
@@ -70,4 +77,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         authenticationProvider.setPasswordEncoder(passwordEncoder());
         return authenticationProvider;
     }
+
+
 }
