@@ -25,7 +25,7 @@ public class LoginController {
     }
 
     @GetMapping("/login")
-    public String login() {
+    public String loginPage() {
         return "login";
     }
 
@@ -36,7 +36,7 @@ public class LoginController {
 
     @GetMapping("/home")
     public String homePage() {
-        return "index";
+        return "home";
     }
 
     @GetMapping("/admin/page")

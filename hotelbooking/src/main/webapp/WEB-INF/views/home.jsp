@@ -11,7 +11,7 @@
     <title>Hello page</title>
 </head>
 <body>
-<p>Hello page</p>
+<p>Hello, ${fullName}</p>
 <a href="${pageContext.request.contextPath}/registration">registration</a>
 <br>
 <a href="${pageContext.request.contextPath}/login">login</a>

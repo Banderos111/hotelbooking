@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: mnazarenka
@@ -13,7 +14,9 @@
 <body>
 <p>Login</p>
 <br>
-
+<c:if test= "${not empty param.error}">
+    <span style="font-size: x-small; color: red; "><b>Неправильный логин или пароль</b></span>
+</c:if>
 <form action="${pageContext.request.contextPath}/login" method="post">
     Email:<input type="text" name="mail">
     Пароль:<input type="text" name="password">

@@ -1,5 +1,6 @@
 package com.anton.web.config;
 
+import com.anton.web.CustomizeAuthenticationSuccessHandler;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -13,6 +14,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @Configuration
 @ComponentScan(basePackages = "com.anton.web")
@@ -21,13 +23,14 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     private final UserDetailsService userDetailsService;
+    private final CustomizeAuthenticationSuccessHandler customizeAuthenticationSuccessHandler;
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
                 .antMatchers("/resources/**")
                 .permitAll()
-                .antMatchers("/index", "/login", "/registration")
+                .antMatchers("/home", "/login", "/registration")
                 .permitAll()
                 .antMatchers("/admin/**")
                 .hasAuthority("ADMIN")
@@ -37,19 +40,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .authenticated()
 
                 .and()
-                .formLogin()
-                .loginPage("/login")
-                .loginProcessingUrl("/login")
-                .defaultSuccessUrl("/index")
-
-                .and()
-                .logout()
-                .logoutUrl("/exit")
-                .logoutSuccessUrl("/login")
-
-
-                .and()
-                .csrf().disable();
+                .csrf().disable().formLogin().successHandler(customizeAuthenticationSuccessHandler)
+                .loginPage("/login").failureUrl("/login?error=true")
+                .usernameParameter("email")
+                .passwordParameter("password")
+                .and().logout()
+                .logoutUrl("/logout")
+                .logoutSuccessUrl("/").and();
 
         http.userDetailsService(userDetailsService);
     }
